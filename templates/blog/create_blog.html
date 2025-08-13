@@ -1,0 +1,18 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'tinymce/tinymce.min.js' %}"></script>
+<script type="text/javascript">
+	tinymce.init({
+		selector: 'textarea',
+		menubar: false
+	})
+</script>
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Create</button>
+</form>
+
+{% endblock %}

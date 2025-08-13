@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Log In | {% endblock %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<a href="/" class="">
+  <p class="mx-4 mt-3 text-brand">Go Home</p>
+</a>
+{% endif %}
+<div class="container">
+  <form action="{% url 'login' %}" method="post" class="login--form mx-auto overflow-hidden" id="loginForm">
+    <h5 class="fw-light fs-4 pt-3 pb-3 text-center mb-0">User Administration</h5>
+    {% for message in messages %}
+    <div class="alert small mt-0 py-2 mx-4 mb-0 mt-4">{{ message }}</div>
+    {% endfor %}
+    {% csrf_token %}
+    <div class="px-4 py-4">
+      <div class="mb-4">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" class="form-control" name="username" id="username">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" class="form-control" name="password" id="password">
+      </div>
+      <div class="text-center">
+        <input type="submit" class="btn btn-brand" value="Login">
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

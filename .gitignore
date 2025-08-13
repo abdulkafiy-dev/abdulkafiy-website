@@ -1,0 +1,20 @@
+# Django
+*.pyc
+__pycache__/
+db.sqlite3
+/static/
+/media/
+.env
+*.log
+*.pot
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.bak
+*.tmp
+*.swp
+.env.*
+.DS_Store

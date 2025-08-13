@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Code with Abdulkafiy | {% endblock %}
+{% block content %}
+{% include 'components/blog-nav.html' %}
+<style type="text/css">
+    img {
+        height: 200px;
+        object-fit: cover;
+        background-position: center;
+    }
+    .hero-p {
+        font-size: 1.2em;
+        font-weight: 100;
+    }
+    .hero-btn {
+        padding: 8px 16px;
+        border-radius: 5px;
+    }
+    .hero-btn, a {
+        font-size: 1.1em;
+        font-weight: 500!important;
+    }
+</style>
+<section class="full-height mt-5">
+    <div class="container">
+        <div class="row gy-4 justify-content-between align-items-center">
+          <div class="col-lg-6 text-center text-md-start text-lg-start">
+              <h1 class="display-4 fw-bold">Coder&apos;s Universe</h1>
+              <p class="hero-p lead">
+                  We're Committed to Providing You with the Very Best Website Developement & Programming Content, Enriched by Community Standards and Expertise. Let's Dive into the World of Programming & Web Development Journey together!
+              </p>
+              <button class="hero-btn btn btn-brand me-4" type="button" onclick="alert('Comming Soon!')">Join Our Community</button>
+              <a class="custom-link" href="#articles">Read Articles</a>
+          </div>
+          <div class="col-lg-5">
+              <img class="img-fluid rounded-3 d-none d-md-block d-lg-block" src="{% static 'images/blog-hero.jpg' %}" alt="Blog Image">
+          </div>
+        </div>
+    </div>
+</section>
+
+<section class="full-height mt-5" id="articles">
+    <div class="container">
+        <h2 class="display-4 fs-2 text-base fw-bold text-center">Latest Articles</h2>
+        <p class="text-brand  fs-5 fw-normal text-center">Read the latest technology update</p>
+        <div class="row gy-4">
+            {% for post in posts %}
+            <div class="col-lg-9 mx-auto mb-3">
+                <div class="card border-0 p-lg-4" style="background: var(--color-base2);">
+                  <img src="{{ post.image.url }}" alt="post image" class="rounded-3">
+                  <h4 class="display-5 fs-4 fw-bold mt-3">{{ post.title }}</h4>
+                  <p class="text-light my-4">{{ post.content|truncatewords:30|safe }}</p>
+                  <div class="d-flex">
+                  <a href="#" class="custom-link fw-normal text-brand">Read More ➡</a>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% include 'components/blog-footer.html' %}
+{% endblock %}

@@ -1,0 +1,50 @@
+     {% load static %}
+     <!-- Navigation Bar  -->
+     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container flex-lg-column">
+          <a class="navbar-brand mb-lg-4 mx-lg-auto" href="#">
+            <span class="fw-bold h2 d-block d-lg-none"><span class="text-brand">Abdulkafiy</span> Abdulkabir <span class="text-brand">.</span></span>
+            <img src="{% static 'images/abdulkafiy.jpg' %}" class="d-none d-lg-block rounded-circle" alt="Abdulkafiy&apos;s Picture">
+          </a>
+          <a class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#services">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#projects">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#skills">Skills</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#reviews">Reviews</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#blog">Blog</a>
+              </li>
+              <li class="nav-item">
+                  {% if user.is_authenticated %}
+                  <a class="nav-link" href="{% url 'logout' %}"><i class="la la-sign-out"></i> Logout</a>
+                  {% else %}
+                  <a class="nav-link" href="accounts/"><i class="la la-sign-in"></i> Log in</a>
+                  {% endif %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- // Navigation Bar -->

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %} Code with Abdulkafiy | {{ post.title }} - {% endblock %}
+{% block content %}
+{% include 'components/blog-nav.html' %}
+<style type="text/css">
+    img {
+        height: 400px;
+        object-fit: cover;
+        background-position: center;
+    }
+    .comment-btn {
+        padding: 8px 16px;
+        background: var(--color-brand);
+        border-radius: 6px;
+        border: none;
+        color: var(--color-base);
+    }
+</style>
+<section class="mb-5">
+</section>
+<section class="full-height mt-5">
+    <div class="container">
+        <div class="row my-lg-5">
+            <div class="col-lg-10 mx-auto">
+                <img src="{{ post.image.url }}" alt="post image" class="rounded-3 mb-3">
+                <small class="text-brand fs-5">Published on {{ posts.created_on|date }}</small>
+                <h2 class="display-5 fs-2 mt-4 fw-bold">{{ posts.title }}</h2>
+                <p class="text-light my-3">{{ posts.content|safe}}</p>
+            </div>
+            <hr class="offset-lg-1 col-lg-6 my-4">
+            <h3 class="offset-lg-1">Comments</h3>
+            <div class="offset-lg-1">
+                {% for comment in comments %}
+                <div class="mb-4">
+                    <p class="fs-5"><i class="la la-comment fs-3 me-2"></i>Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created|date }}</p>
+                    <div class="bg-base col-lg-5 rounded-3 px-3 py-3">
+                        <p class="mb-0 fs-5 text-brand"><i class="la la-user fs-4 me-2"></i>{{ comment.name }}</p>
+                        <p>{{ comment.body|linebreaks }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                    <p class="fs-5">No comment yet 😢</p>
+                {% endfor %}
+            </div>
+            <hr class="offset-lg-1 col-lg-6 my-4">
+            <form method="post" action="#" class="col-lg-6 offset-lg-1 my-4">
+                {% csrf_token %}
+                <h3>Leave a Comment:</h3>
+               <div class="mb-4">
+                    <label class="form-label" for="name">Your Username&quest;</label>
+                    <div>
+                        {{ form.name}}
+                    </div>
+               </div>
+                <div class="mb-4">
+                    <label class="form-label" for="body">What&apos;s Your Comment&quest;</label>
+                    <div>
+                        {{ form.body }}
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-brand comment-btn" name="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</section>
+{% include 'components/footer.html' %}
+{% endblock %}

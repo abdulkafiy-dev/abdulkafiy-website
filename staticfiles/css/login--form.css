@@ -1,0 +1,28 @@
+/* User Authentication  */
+.login--form {
+    max-width: 400px;
+    background-color: var(--color-base);
+    border-radius: 5px;
+    margin: 100px auto;
+  }
+  .login--form input[type="text"], .login--form input[type="password"] {
+    background: var(--color-base);
+    border-radius: 5px;
+    color: #fff;
+  }
+  .login--form .btn {
+    padding: 8px 18px;
+    border-radius: 5px;
+  }
+  .login--form h5 {
+    color: var(--color-base);
+    background-color: var(--color-brand);
+  }
+
+  /* Error Message */
+  .login--form .alert {
+    color: #e35f5f;
+    background-color: rgba(0,0,0, 0.6);
+    outline: solid 1px #e35f5f;
+    font-weight: 600;
+  }
